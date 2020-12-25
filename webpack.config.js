@@ -2,7 +2,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpack = require('webpack');
 //string production on heroku if neither then it's development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
