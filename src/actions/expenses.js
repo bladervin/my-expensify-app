@@ -38,6 +38,16 @@ export const removeExpense = ({ id } = {}) => ({
     id  //id must be in the action object otherwise can't use it in the reducers
 });
 
+export const startRemoveExpense = ({ id }) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`)
+        .remove()
+        .then(() => {
+            dispatch(removeExpense({ id }));
+        });
+    };
+};
+
 export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
