@@ -32,7 +32,6 @@ export const startAddExpense = (expenseData = {}) => {
     };
 };
 
-//removeExpense
 export const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id  //id must be in the action object otherwise can't use it in the reducers
@@ -53,6 +52,14 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+export const startEditExpense = (id, updates) => {
+    return(dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    };
+}
 
 //SETEXPENSES
 export const setExpenses = (expenses) => ({
